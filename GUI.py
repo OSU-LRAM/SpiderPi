@@ -31,6 +31,7 @@ def menu_control(menu_text):
     new_index = 0
     menu_length = len(menu_text)
     print(menu_text)
+    lcd.clear()
     lcd.message = menu_text[index]
     confirm = False
     while not confirm:
