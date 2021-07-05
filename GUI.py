@@ -54,7 +54,7 @@ def menu_control(menu_text):
 
 
 menu_choice = menu_control(first_menu)
-lcd.message = menu choice + "chosen"
+lcd.message = str(menu_choice) + "chosen"
 '''
 lcd.clear()
 # Set LCD color to red
