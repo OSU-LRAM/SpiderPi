@@ -29,6 +29,7 @@ def menu_control(menu_text):
     new_index = 0
     menu_length = len(menu_text)
     print(menu_text)
+    lcd.text = menu_text[index]
     while True:
 
         if lcd.left_button:
@@ -51,7 +52,7 @@ def menu_control(menu_text):
             lcd.clear()
         print(new_index)
         if new_index != index:
-            print("change in menu")
+            print(menu_text[new_index])
             index = new_index
             lcd.clear()
             lcd.color = [100, 0, 0]
