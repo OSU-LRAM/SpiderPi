@@ -30,6 +30,7 @@ def menu_control(menu_text):
     menu_length = len(menu_text)
     print(menu_text)
     lcd.message = menu_text[index]
+    confirm = False
     while not confirm:
         if lcd.left_button:
             new_index = (new_index + 1) % menu_length
