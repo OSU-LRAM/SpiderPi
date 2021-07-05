@@ -49,16 +49,16 @@ def menu_control(menu_text):
 
         else:
             time.sleep(0.1)
-            lcd.clear()
+            # lcd.clear()
         print(new_index)
         if new_index != index:
             print(menu_text[new_index])
             index = new_index
-            lcd.clear()
-            lcd.color = [100, 0, 0]
+            # lcd.clear()
+            # lcd.color = [100, 0, 0]
             text = menu_text[index]
             lcd.text = text
-            time.sleep(0.1)
+            time.sleep(0.05)
 
 
 menu_control(first_menu)
