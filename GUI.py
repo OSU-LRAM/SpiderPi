@@ -44,7 +44,8 @@ def menu_control(menu_text):
             new_index = (new_index + 1) % menu_length
         elif lcd.select_button:
             choice = index
-            lcd.message = first_menu[index] + " was chosen"
+            lcd.clear()
+            lcd.message = first_menu[index] + "\n was chosen"
             time.sleep(0.2)
             confirm = True
             return choice
@@ -60,6 +61,7 @@ def menu_control(menu_text):
 first_choice = menu_control(first_menu)
 
 if first_choice == 0:
+    lcd.clear()
     lcd.message = 'will add later'
 elif first_choice == 1:
     second_choice = menu_control(second_menu)
