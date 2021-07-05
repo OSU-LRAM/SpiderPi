@@ -89,8 +89,10 @@ class GenerateAudio:
 # Sample rate and impulse frequency
 ga = GenerateAudio(44100, 550)
 
-ga.filename = "test.wav"
+ga.filename = "test3.wav"
 # pause time, impulse time, volume of impulse
+ga.add_both(500, 100)
+ga.add_both(500, 100)
 ga.add_both(500, 100)
 ga.save_wav_audio()
 ga.plot_wav_audio()
