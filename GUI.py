@@ -56,7 +56,8 @@ def menu_control(menu_text):
             index = new_index
             lcd.clear()
             lcd.color = [100, 0, 0]
-            lcd.text = menu_text[index]
+            text = menu_text[index]
+            lcd.text = text
             time.sleep(0.1)
 
 
