@@ -20,7 +20,7 @@ i2c = board.I2C()  # uses board.SCL and board.SDA
 lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 
 lcd.clear()
-lcd.color = [0, 0, 0]
+lcd.color = [100, 0, 0]
 
 first_menu = ["git pull?", "Choose Signal?", "Exit?"]
 
@@ -48,14 +48,15 @@ def menu_control(menu_text):
 
         else:
             time.sleep(0.1)
-            # lcd.clear()
+            lcd.clear()
         print(new_index)
         if new_index != index:
             print("change in menu")
             index = new_index
             lcd.clear()
-            lcd.color = [0, 0, 0]
+            lcd.color = [100, 0, 0]
             lcd.text = menu_text[index]
+            time.sleep(0.1)
 
 
 menu_control(first_menu)
