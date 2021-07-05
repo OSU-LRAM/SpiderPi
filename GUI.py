@@ -48,7 +48,7 @@ def menu_control(menu_text):
         else:
             time.sleep(0.1)
             # lcd.clear()
-            
+        print(new_index)
         if new_index != index:
             index = new_index
             lcd.text = menu_text[index]
