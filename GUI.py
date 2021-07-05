@@ -29,23 +29,20 @@ def menu_control(menu_text):
     new_index = 0
     menu_length = len(menu_text)
     print(menu_text)
-    while True:
-
+    lcd.message = menu_text[index]
+    while not confirm:
         if lcd.left_button:
             new_index = (new_index + 1) % menu_length
-
-        elif lcd.up_button:
-            new_index = (new_index + 1) % menu_length
-
-        elif lcd.down_button:
-            new_index = (new_index + 1) % menu_length
-
+        #elif lcd.up_button:
+        #    new_index = (new_index + 1) % menu_length
+        #elif lcd.down_button:
+        #    new_index = (new_index - 1) % menu_length
         elif lcd.right_button:
-            new_index = (new_index + 1) % menu_length
-
+            new_index = (new_index - 1) % menu_length
         elif lcd.select_button:
-            new_index = (new_index + 1) % menu_length
-
+            choice = index
+            confirm = True
+            return choice
         else:
             time.sleep(0.075)
         if new_index != index:
@@ -56,8 +53,8 @@ def menu_control(menu_text):
             time.sleep(0.075)
 
 
-menu_control(first_menu)
-
+menu_choice = menu_control(first_menu)
+lcd.message = menu choice + "chosen"
 '''
 lcd.clear()
 # Set LCD color to red
