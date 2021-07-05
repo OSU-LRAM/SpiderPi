@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import scipy.io
 import scipy.io.wavfile
 
-
 '''
 Code is based on https://stackoverflow.com/questions/33879523/python-how-can-i-generate-a-wav-file-with-beeps
 Also code was recycled from past work playing audio.
@@ -91,6 +90,9 @@ ga = GenerateAudio(44100, 550)
 
 ga.filename = "test3.wav"
 # pause time, impulse time, volume of impulse
+
+
+
 ga.add_both(500, 100)
 ga.add_both(500, 100)
 ga.add_both(500, 100)

@@ -9,6 +9,9 @@ import time
 import board
 import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 import os
+from play_audio.py import play_audio
+
+
 # Modify this if you have a different sized Character LCD
 lcd_columns = 16
 lcd_rows = 2
@@ -24,7 +27,7 @@ lcd.color = [100, 0, 0]
 
 first_menu = ["git pull?", "Choose Signal?", "Exit?"]
 second_menu = os.listdir("audio/")
-
+print(second_menu)
 
 def menu_control(menu_text):
     index = 0
@@ -46,7 +49,7 @@ def menu_control(menu_text):
         elif lcd.select_button:
             choice = index
             lcd.clear()
-            lcd.message = first_menu[index] + "\n was chosen"
+            lcd.message = menu_text[index] + "\nwas chosen"
             time.sleep(0.2)
             confirm = True
             return choice
@@ -66,6 +69,7 @@ if first_choice == 0:
     lcd.message = 'will add later'
 elif first_choice == 1:
     second_choice = menu_control(second_menu)
+    play_audio(1, second_choice)
 elif first_choice == 2:
     exit()
 
