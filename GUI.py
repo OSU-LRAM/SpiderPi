@@ -29,7 +29,7 @@ def menu_control(menu_text):
     new_index = 0
     menu_length = len(menu_text)
     print(menu_text)
-    lcd.text = menu_text[index]
+    lcd.message = menu_text[index]
     while True:
 
         if lcd.left_button:
@@ -57,7 +57,7 @@ def menu_control(menu_text):
             # lcd.clear()
             # lcd.color = [100, 0, 0]
             text = menu_text[index]
-            lcd.text = text
+            lcd.message = text
             time.sleep(0.05)
 
 
