@@ -92,6 +92,7 @@ while True:
 
 
     elif first_choice == 2:
+        lcd.clear()
         exit()
 
 
