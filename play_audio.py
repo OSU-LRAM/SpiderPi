@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-import pygame
+# import pygame
 from pygame import mixer
 import time
 
 pygame.mixer.init()
-pygame.init()
-screen = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
+# pygame.init()
+# screen = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
 
 
 def play_audio(vol, filename):
