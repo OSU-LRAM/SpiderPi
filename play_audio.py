@@ -3,7 +3,7 @@
 from pygame import mixer
 import time
 
-pygame.mixer.init()
+mixer.init()
 # pygame.init()
 # screen = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
 
@@ -19,16 +19,17 @@ def play_audio(vol, filename):
     mixer.init()
     audio = mixer.Sound("audio/"+filename)
     audio.set_volume(vol)
+    print('start')
     audio.play()
     time.sleep(1)
-    print('start')
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    print('Quit')
-                    pygame.quit()
-                    raise SystemExit(0)
+
+    # while True:
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.KEYDOWN:
+    #             if event.key == pygame.K_ESCAPE:
+    #                 print('Quit')
+    #                 pygame.quit()
+    #                 raise SystemExit(0)
 
 
 play_audio(1, 'test.wav')
