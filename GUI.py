@@ -78,6 +78,7 @@ def play_audio(vol, filename):
     audio.set_volume(vol)
     print('start')
     audio.play()
+    time.sleep(audio.get_length())
 
 
 while True:
