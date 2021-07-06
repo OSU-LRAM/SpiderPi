@@ -65,6 +65,21 @@ def menu_control(menu_text):
             lcd.message = menu_text[index]
             time.sleep(0.075)
 
+def play_audio(vol, filename):
+    """
+    Play the .wav file
+    :param vol: Volume audio is played at (0-1)
+    :param filename: Name of audio file (55hz.wav)
+    :return: None
+    """
+    mixer.pre_init(44100, -16, 1, 512)  # <-- fixes sound lag delay
+    mixer.init()
+    audio = mixer.Sound("audio/" + filename)
+    audio.set_volume(vol)
+    print('start')
+    audio.play()
+    time.sleep(1)
+
 first_choice = menu_control(first_menu)
 
 if first_choice == 0:
@@ -83,20 +98,7 @@ elif first_choice == 2:
 # screen = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
 
 
-def play_audio(vol, filename):
-    """
-    Play the .wav file
-    :param vol: Volume audio is played at (0-1)
-    :param filename: Name of audio file (55hz.wav)
-    :return: None
-    """
-    mixer.pre_init(44100, -16, 1, 512)  # <-- fixes sound lag delay
-    mixer.init()
-    audio = mixer.Sound("audio/"+filename)
-    audio.set_volume(vol)
-    print('start')
-    audio.play()
-    time.sleep(1)
+
 
     # while True:
     #     for event in pygame.event.get():
