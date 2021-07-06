@@ -87,7 +87,7 @@ if first_choice == 0:
     lcd.message = 'will add later'
 elif first_choice == 1:
     second_choice = menu_control(second_menu)
-    play_audio(1, second_choice)
+    play_audio(1, second_menu[second_choice])
 elif first_choice == 2:
     exit()
 
