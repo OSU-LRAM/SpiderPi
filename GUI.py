@@ -30,13 +30,11 @@ lcd.color = [100, 0, 0]
 
 first_menu = ["git pull?", "Choose Signal?", "Exit?"]
 second_menu = os.listdir("audio/")
-print(second_menu)
 
 def menu_control(menu_text):
     index = 0
     new_index = 0
     menu_length = len(menu_text)
-    print(menu_text)
     lcd.clear()
     lcd.message = menu_text[index]
     confirm = False
@@ -59,7 +57,6 @@ def menu_control(menu_text):
         else:
             time.sleep(0.075)
         if new_index != index:
-            print(menu_text[new_index])
             index = new_index
             lcd.clear()
             lcd.message = menu_text[index]
@@ -76,18 +73,19 @@ def play_audio(vol, filename):
     mixer.init()
     audio = mixer.Sound("audio/" + filename)
     audio.set_volume(vol)
-    print('start')
     audio.play()
     time.sleep(audio.get_length())
 
 
 while True:
     first_choice = menu_control(first_menu)
+    print(first_choice)
     if first_choice == 0:
         lcd.clear()
         lcd.message = 'will add later'
     elif first_choice == 1:
         second_choice = menu_control(second_menu)
+        print(second_choice)
         lcd.clear()
         lcd.message = 'playing\n'+second_menu[second_choice]
         play_audio(1, second_menu[second_choice])
