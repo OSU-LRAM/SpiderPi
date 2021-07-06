@@ -51,9 +51,9 @@ def menu_control(menu_text):
             new_index = (new_index + 1) % menu_length
         elif lcd.select_button:
             choice = index
-            lcd.clear()
-            lcd.message = menu_text[index] + "\nwas chosen"
-            time.sleep(0.2)
+            #lcd.clear()
+            #lcd.message = menu_text[index] + "\nwas chosen"
+            #time.sleep(0.2)
             confirm = True
             return choice
         else:
@@ -91,7 +91,7 @@ while True:
         play_audio(1, second_menu[second_choice])
         lcd.clear()
         lcd.message = 'playing\n'+second_menu[second_choice]
-        
+
     elif first_choice == 2:
         exit()
 
