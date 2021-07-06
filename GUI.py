@@ -9,6 +9,7 @@ import time
 import board
 import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 import os
+import git
 
 import pygame
 from pygame import mixer
@@ -77,12 +78,17 @@ def play_audio(vol, filename):
     time.sleep(audio.get_length())
 
 
+def git_pull():
+    repo = git.Repo("/home/pi/SpiderPi/")
+    repo.remotes.origin.pull()
+
 while True:
     first_choice = menu_control(first_menu)
     print(first_choice)
     if first_choice == 0:
         lcd.clear()
-        lcd.message = 'will add later'
+        lcd.message = 'Try to pull'
+        git_pull()
     elif first_choice == 1:
         second_choice = menu_control(second_menu)
         print(second_choice)
