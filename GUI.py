@@ -11,7 +11,7 @@ import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 import os
 
 import pygame
-#from play_audio.py import play_audio
+from play_audio.py import play_audio
 
 
 # Modify this if you have a different sized Character LCD
