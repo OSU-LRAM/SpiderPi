@@ -99,6 +99,7 @@ while True:
 
     elif first_choice == 2:
         lcd.clear()
+        lcd.color = [0,0,0]
         exit()
 
 
