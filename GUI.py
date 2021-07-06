@@ -78,7 +78,6 @@ def play_audio(vol, filename):
     audio.set_volume(vol)
     print('start')
     audio.play()
-    time.sleep(1)
 
 
 while True:
@@ -88,9 +87,10 @@ while True:
         lcd.message = 'will add later'
     elif first_choice == 1:
         second_choice = menu_control(second_menu)
-        play_audio(1, second_menu[second_choice])
         lcd.clear()
         lcd.message = 'playing\n'+second_menu[second_choice]
+        play_audio(1, second_menu[second_choice])
+
 
     elif first_choice == 2:
         exit()
