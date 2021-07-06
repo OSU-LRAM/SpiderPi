@@ -80,16 +80,20 @@ def play_audio(vol, filename):
     audio.play()
     time.sleep(1)
 
-first_choice = menu_control(first_menu)
 
-if first_choice == 0:
-    lcd.clear()
-    lcd.message = 'will add later'
-elif first_choice == 1:
-    second_choice = menu_control(second_menu)
-    play_audio(1, second_menu[second_choice])
-elif first_choice == 2:
-    exit()
+while True:
+    first_choice = menu_control(first_menu)
+    if first_choice == 0:
+        lcd.clear()
+        lcd.message = 'will add later'
+    elif first_choice == 1:
+        second_choice = menu_control(second_menu)
+        play_audio(1, second_menu[second_choice])
+        lcd.clear()
+        lcd.message = 'playing\n'+second_menu[second_choice]
+        
+    elif first_choice == 2:
+        exit()
 
 
 
