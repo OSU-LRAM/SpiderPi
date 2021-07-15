@@ -9,7 +9,7 @@ import time
 import board
 import adafruit_character_lcd.character_lcd_rgb_i2c as character_lcd
 import os
-import git
+# import git
 
 import pygame
 from pygame import mixer
