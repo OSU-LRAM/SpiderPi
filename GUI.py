@@ -15,7 +15,7 @@ import pygame
 from pygame import mixer
 mixer.init()
 
-
+print('starting gui')
 # Modify this if you have a different sized Character LCD
 lcd_columns = 16
 lcd_rows = 2
