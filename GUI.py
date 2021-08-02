@@ -29,10 +29,11 @@ lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.clear()
 lcd.color = [100, 0, 0]
 
-first_menu = ["git pull?", "Choose Signal?", "Exit?"]
+first_menu = [" Update Signals + Code?", " Choose Signals?", " Exit?"]
 second_menu = os.listdir("audio/")
 
-def menu_control(menu_text):
+
+def menu_control(header, menu_text):
     index = 0
     new_index = 0
     menu_length = len(menu_text)
@@ -60,16 +61,20 @@ def menu_control(menu_text):
         if new_index != index:
             index = new_index
             lcd.clear()
-            lcd.message = menu_text[index]
+            lcd.message = " " + header + " \n " + menu_text[index]
             time.sleep(0.075)
 
-def play_audio(vol, filename):
+
+def play_audio(vol, filename, side = 0):
     """
     Play the .wav file
     :param vol: Volume audio is played at (0-1)
     :param filename: Name of audio file (55hz.wav)
     :return: None
     """
+    left_channel = pygame.mixer.Channel(side)
+    right_channel = pygame.mixer.Channel(side   )
+
     mixer.pre_init(44100, -16, 1, 512)  # <-- fixes sound lag delay
     mixer.init()
     audio = mixer.Sound("audio/" + filename)
@@ -83,17 +88,21 @@ def git_pull():
     repo.remotes.origin.pull()
 
 while True:
-    first_choice = menu_control(first_menu)
+    first_choice = menu_control(first_menu, "")
     print(first_choice)
     if first_choice == 0:
         lcd.clear()
-        lcd.message = 'Try to pull'
+        lcd.message = ' updating...'
         git_pull()
-    elif first_choice == 1:
-        second_choice = menu_control(second_menu)
-        print(second_choice)
+        lcd.message = ' update complete'
         lcd.clear()
-        lcd.message = 'playing\n'+second_menu[second_choice]
+    elif first_choice == 1:
+        lcd.clear()
+        left_choice = menu_control(first_choice, second_menu)
+        print(" Choosing left signal\n "+left_choice)
+        lcd.message = menu_control(second_menu)
+        lcd.clear()
+        lcd.message = ' playing\n '+second_menu[second_choice]
         play_audio(1, second_menu[second_choice])
 
 
