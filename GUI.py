@@ -88,7 +88,7 @@ def git_pull():
     repo.remotes.origin.pull()
 
 while True:
-    first_choice = menu_control(first_menu, "")
+    first_choice = menu_control("", first_menu)
     print(first_choice)
     if first_choice == 0:
         lcd.clear()
