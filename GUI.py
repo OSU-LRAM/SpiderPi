@@ -93,7 +93,6 @@ def git_pull():
 
 while True:
     first_choice = menu_control(" Main Menu: ", first_menu)
-    print(first_choice)
     if first_choice == 0:
         lcd.clear()
         lcd.message = ' updating...'
@@ -102,9 +101,9 @@ while True:
         lcd.clear()
     elif first_choice == 1:
         lcd.clear()
-        left_choice = menu_control(' left signal', second_menu)
+        left_choice = menu_control(" left signal", second_menu)
         lcd.clear()
-        right_choice = menu_control(' right signal', second_menu)
+        right_choice = menu_control(" right signal", second_menu)
         lcd.clear()
         lcd.message = ' playing...'
         play_audio(1, second_menu[left_choice], second_menu[right_choice])
