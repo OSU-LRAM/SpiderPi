@@ -80,8 +80,8 @@ def play_audio(vol, left_filename, right_filename):
     mixer.pre_init(44100, -16, 2, 512)  # <-- fixes sound lag delay
     mixer.init()
     pygame.mixer.set_num_channels(2)
-    left_audio = mixer.Sound("audio/" + left_filename)
-    right_audio = mixer.Sound("audio/" + right_filename)
+    left_audio = mixer.Sound(["audio/" + left_filename])
+    right_audio = mixer.Sound(["audio/" + right_filename])
     left_audio.set_volume(vol)
     left_audio.play()
     time.sleep(left_audio.get_length())
@@ -102,9 +102,9 @@ while True:
         lcd.clear()
     elif first_choice == 1:
         lcd.clear()
-        left_choice = menu_control('left signal', second_menu)
+        left_choice = menu_control(' left signal', second_menu)
         lcd.clear()
-        right_choice = menu_control('right signal', second_menu)
+        right_choice = menu_control(' right signal', second_menu)
         lcd.clear()
         lcd.message = ' playing...'
         play_audio(1, second_menu[left_choice], second_menu[right_choice])
