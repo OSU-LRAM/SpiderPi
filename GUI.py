@@ -38,6 +38,7 @@ def menu_control(header, menu_text):
     new_index = 0
     menu_length = len(menu_text)
     lcd.clear()
+    print(header)
     lcd.message = header + " \n " + menu_text[index]
     confirm = False
     while not confirm:
@@ -61,6 +62,7 @@ def menu_control(header, menu_text):
         if new_index != index:
             index = new_index
             lcd.clear()
+            print(header)
             lcd.message = header + " \n " + menu_text[index]
             time.sleep(0.075)
 
@@ -80,7 +82,7 @@ def play_audio(vol, left_filename, right_filename):
     pygame.mixer.set_num_channels(2)
     left_audio = mixer.Sound("audio/" + left_filename)
     right_audio = mixer.Sound("audio/" + right_filename)
-    left_audio.set_volume(vol,vol)
+    left_audio.set_volume(vol)
     left_audio.play()
     time.sleep(left_audio.get_length())
 
