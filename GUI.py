@@ -29,7 +29,7 @@ lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.clear()
 lcd.color = [100, 0, 0]
 
-first_menu = [" Update?", " Play?", " Exit?"]
+first_menu = [" update?", " play?", " exit?"]
 second_menu = os.listdir("audio/")
 
 
@@ -65,22 +65,24 @@ def menu_control(header, menu_text):
             time.sleep(0.075)
 
 
-def play_audio(vol, filename, side = 0):
+def play_audio(vol, left_filename, right_filename):
     """
     Play the .wav file
     :param vol: Volume audio is played at (0-1)
     :param filename: Name of audio file (55hz.wav)
     :return: None
     """
-    left_channel = pygame.mixer.Channel(side)
-    right_channel = pygame.mixer.Channel(side   )
+    left_channel = pygame.mixer.Channel(0)
+    right_channel = pygame.mixer.Channel(1)
 
-    mixer.pre_init(44100, -16, 1, 512)  # <-- fixes sound lag delay
+    mixer.pre_init(44100, -16, 2, 512)  # <-- fixes sound lag delay
     mixer.init()
-    audio = mixer.Sound("audio/" + filename)
-    audio.set_volume(vol)
-    audio.play()
-    time.sleep(audio.get_length())
+    pygame.mixer.set_num_channels(2)
+    left_audio = mixer.Sound("audio/" + left_filename)
+    right_audio = mixer.Sound("audio/" + right_filename)
+    left_audio.set_volume(vol,vol)
+    left_audio.play()
+    time.sleep(left_audio.get_length())
 
 
 def git_pull():
@@ -98,12 +100,15 @@ while True:
         lcd.clear()
     elif first_choice == 1:
         lcd.clear()
-        left_choice = menu_control(first_choice, second_menu)
-        print(" Choosing left signal\n "+left_choice)
-        lcd.message = menu_control(second_menu)
+        left_choice = menu_control('left signal', second_menu)
         lcd.clear()
-        lcd.message = ' playing\n '+second_menu[second_choice]
-        play_audio(1, second_menu[second_choice])
+        right_choice = menu_control('right signal', second_menu)
+        lcd.clear()
+        lcd.message = ' playing...'
+        play_audio(1, second_menu[left_choice], second_menu[right_choice])
+        lcd.clear()
+        lcd.message = ' finished'
+        time.sleep(0.25)
 
 
     elif first_choice == 2:
