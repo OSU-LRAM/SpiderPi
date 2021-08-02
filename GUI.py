@@ -38,7 +38,7 @@ def menu_control(header, menu_text):
     new_index = 0
     menu_length = len(menu_text)
     lcd.clear()
-    lcd.message =" Main Menu: " + header + " \n " + menu_text[index]
+    lcd.message = header + " \n " + menu_text[index]
     confirm = False
     while not confirm:
         if lcd.left_button:
@@ -61,7 +61,7 @@ def menu_control(header, menu_text):
         if new_index != index:
             index = new_index
             lcd.clear()
-            lcd.message = " Main Menu: " + header + " \n " + menu_text[index]
+            lcd.message = header + " \n " + menu_text[index]
             time.sleep(0.075)
 
 
@@ -90,7 +90,7 @@ def git_pull():
     repo.remotes.origin.pull()
 
 while True:
-    first_choice = menu_control("", first_menu)
+    first_choice = menu_control(" Main Menu: ", first_menu)
     print(first_choice)
     if first_choice == 0:
         lcd.clear()
