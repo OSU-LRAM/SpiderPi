@@ -38,7 +38,7 @@ def menu_control(header, menu_text):
     new_index = 0
     menu_length = len(menu_text)
     lcd.clear()
-    lcd.message = menu_text[index]
+    lcd.message =" Main Menu: " + header + " \n " + menu_text[index]
     confirm = False
     while not confirm:
         if lcd.left_button:
