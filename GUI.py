@@ -29,7 +29,7 @@ lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.clear()
 lcd.color = [100, 0, 0]
 
-first_menu = [" Update Signals + Code?", " Choose Signals?", " Exit?"]
+first_menu = [" Update?", " Play?", " Exit?"]
 second_menu = os.listdir("audio/")
 
 
@@ -61,7 +61,7 @@ def menu_control(header, menu_text):
         if new_index != index:
             index = new_index
             lcd.clear()
-            lcd.message = " " + header + " \n " + menu_text[index]
+            lcd.message = " Main Menu: " + header + " \n " + menu_text[index]
             time.sleep(0.075)
 
 
