@@ -108,6 +108,8 @@ while True:
         right_choice = menu_control(" right signal", second_menu)
         lcd.clear()
         lcd.message = ' playing...'
+        print("audio choices", second_menu[left_choice], second_menu[right_choice])
+        print(type(second_menu[left_choice]))
         play_audio(1, second_menu[left_choice], second_menu[right_choice])
         lcd.clear()
         lcd.message = ' finished'
