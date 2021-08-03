@@ -15,59 +15,6 @@ import git
 import pygame
 from pygame import mixer
 
-def starter():
-
-    mixer.init()
-
-    print('starting gui')
-    # Modify this if you have a different sized Character LCD
-    lcd_columns = 16
-    lcd_rows = 2
-
-    # Initialise I2C bus.
-    i2c = board.I2C()  # uses board.SCL and board.SDA
-
-    # Initialise the LCD class
-    lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
-
-    lcd.clear()
-    lcd.color = [100, 0, 0]
-
-    first_menu = [" play?", " update?",  " exit?"]
-
-    while True:
-        first_choice = menu_control(" Main Menu: ", first_menu)
-        if first_choice == 1:
-            lcd.clear()
-            lcd.message = ' updating...'
-            git_pull()
-            lcd.message = ' update complete'
-            time.sleep(0.25)
-            lcd.clear()
-            restart()
-
-
-        elif first_choice == 0:
-            second_menu = os.listdir("audio/")
-            lcd.clear()
-            left_choice = menu_control(" left signal", second_menu)
-            lcd.clear()
-            right_choice = menu_control(" right signal", second_menu)
-            lcd.clear()
-            lcd.message = ' playing...'
-            print("audio choices", second_menu[left_choice], second_menu[right_choice])
-            print(type(second_menu[left_choice]))
-            play_audio(1, second_menu[left_choice], second_menu[right_choice])
-            lcd.clear()
-            lcd.message = ' finished'
-            time.sleep(0.25)
-
-
-        elif first_choice == 2:
-            lcd.clear()
-            lcd.color = [0, 0, 0]
-            exit()
-
 
 def menu_control(header, menu_text):
     index = 0
@@ -138,8 +85,58 @@ def restart():
     # time.sleep(0.25)
     os.execv(sys.argv[0], sys.argv)
 
-if __name__ == '__main__':
-    starter()
+
+mixer.init()
+
+print('starting gui')
+# Modify this if you have a different sized Character LCD
+lcd_columns = 16
+lcd_rows = 2
+
+# Initialise I2C bus.
+i2c = board.I2C()  # uses board.SCL and board.SDA
+
+# Initialise the LCD class
+lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
+
+lcd.clear()
+lcd.color = [100, 0, 0]
+
+first_menu = [" play?", " update?",  " exit?"]
+
+while True:
+    first_choice = menu_control(" Main Menu: ", first_menu)
+    if first_choice == 1:
+        lcd.clear()
+        lcd.message = ' updating...'
+        git_pull()
+        lcd.message = ' update complete'
+        time.sleep(0.25)
+        lcd.clear()
+
+    elif first_choice == 0:
+        second_menu = os.listdir("audio/")
+        lcd.clear()
+        left_choice = menu_control(" left signal", second_menu)
+        lcd.clear()
+        right_choice = menu_control(" right signal", second_menu)
+        lcd.clear()
+        lcd.message = ' playing...'
+        print("audio choices", second_menu[left_choice], second_menu[right_choice])
+        print(type(second_menu[left_choice]))
+        play_audio(1, second_menu[left_choice], second_menu[right_choice])
+        lcd.clear()
+        lcd.message = ' finished'
+        time.sleep(0.25)
+
+
+    elif first_choice == 2:
+        lcd.clear()
+        lcd.color = [0,0,0]
+        exit()
+
+
+
 
 # pygame.init()
 # screen = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
