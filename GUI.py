@@ -82,8 +82,7 @@ def restart():
     lcd.clear()
     lcd.message = ' restarting...'
     # time.sleep(0.25)
-    os.execv(sys.argv[0], sys.argv)
-
+    os.execv(sys.executable, ['python'] + sys.argv)
 
 mixer.init()
 
