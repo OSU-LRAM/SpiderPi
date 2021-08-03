@@ -86,8 +86,8 @@ def play_audio(vol, left_filename, right_filename):
     left_channel.play(left_audio)
     time.sleep(.1)
     right_channel.play(right_audio)
-    left_audio.set_volume(vol)
-    right_audio.set_volume(vol)
+    left_channel.set_volume(vol, 0)
+    right_channel.set_volume(1, vol)
     time.sleep(max(left_audio.get_length(), right_audio.get_length()))
 
 
