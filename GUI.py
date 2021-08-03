@@ -74,8 +74,7 @@ def play_audio(vol, left_filename, right_filename):
     :param filename: Name of audio file (55hz.wav)
     :return: None
     """
-    left_channel = pygame.mixer.Channel(0)
-    right_channel = pygame.mixer.Channel(1)
+
 
     mixer.pre_init(44100, -16, 2, 512)  # <-- fixes sound lag delay
     mixer.init()
@@ -83,12 +82,13 @@ def play_audio(vol, left_filename, right_filename):
     print("audio/" + left_filename)
     left_audio = mixer.Sound("audio/" + left_filename)
     right_audio = mixer.Sound("audio/" + right_filename)
-
+    left_channel = mixer.Channel(0)
+    right_channel = mixer.Channel(1)
     left_channel.play(left_audio)
     right_channel.play(right_audio)
     left_audio.set_volume(vol, 0)
     right_audio.set_volume(0, vol)
-    time.sleep(max(left_audio.get_length(),right_audio.get_length()))
+    time.sleep(max(left_audio.get_length(), right_audio.get_length()))
 
 
 def git_pull():
