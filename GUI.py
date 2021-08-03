@@ -83,10 +83,11 @@ def play_audio(vol, left_filename, right_filename):
     print("audio/" + left_filename)
     left_audio = mixer.Sound("audio/" + left_filename)
     right_audio = mixer.Sound("audio/" + right_filename)
-    left_audio.set_volume(vol, 0)
-    right_audio.set_volume(0, vol)
+
     left_channel.play(left_audio)
     right_channel.play(right_audio)
+    left_audio.set_volume(vol, 0)
+    right_audio.set_volume(0, vol)
     time.sleep(max(left_audio.get_length(),right_audio.get_length()))
 
 
