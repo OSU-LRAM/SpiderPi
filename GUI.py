@@ -80,8 +80,9 @@ def play_audio(vol, left_filename, right_filename):
     mixer.pre_init(44100, -16, 2, 512)  # <-- fixes sound lag delay
     mixer.init()
     pygame.mixer.set_num_channels(2)
-    left_audio = mixer.Sound(["audio/" + left_filename])
-    right_audio = mixer.Sound(["audio/" + right_filename])
+    print("audio/" + left_filename)
+    left_audio = mixer.Sound("audio/" + left_filename)
+    right_audio = mixer.Sound("audio/" + right_filename)
     left_audio.set_volume(vol, 0)
     right_audio.set_volume(0, vol)
     left_channel.play(left_audio)
