@@ -21,7 +21,6 @@ def menu_control(header, menu_text):
     new_index = 0
     menu_length = len(menu_text)
     lcd.clear()
-    print(header)
     lcd.message = header + " \n " + menu_text[index]
     confirm = False
     while not confirm:
@@ -113,6 +112,7 @@ while True:
         lcd.message = ' update complete'
         time.sleep(0.25)
         lcd.clear()
+        restart()
 
     elif first_choice == 0:
         second_menu = os.listdir("audio/")
