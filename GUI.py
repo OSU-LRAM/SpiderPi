@@ -29,7 +29,7 @@ lcd = character_lcd.Character_LCD_RGB_I2C(i2c, lcd_columns, lcd_rows)
 lcd.clear()
 lcd.color = [100, 0, 0]
 
-first_menu = [" update?", " play?", " exit?"]
+first_menu = [" play?", " update?",  " exit?"]
 
 
 def menu_control(header, menu_text):
@@ -97,14 +97,14 @@ def git_pull():
 
 while True:
     first_choice = menu_control(" Main Menu: ", first_menu)
-    if first_choice == 0:
+    if first_choice == 1:
         lcd.clear()
         lcd.message = ' updating...'
         git_pull()
         lcd.message = ' update complete'
         lcd.clear()
 
-    elif first_choice == 1:
+    elif first_choice == 0:
         second_menu = os.listdir("audio/")
         lcd.clear()
         left_choice = menu_control(" left signal", second_menu)
