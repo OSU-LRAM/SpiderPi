@@ -86,7 +86,7 @@ def restart():
 
 mixer.init()
 
-print('starting gui')
+print('starting gui with a new message')
 # Modify this if you have a different sized Character LCD
 lcd_columns = 16
 lcd_rows = 2
