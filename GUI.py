@@ -84,6 +84,7 @@ def play_audio(vol, left_filename, right_filename):
     left_channel = mixer.Channel(0)
     right_channel = mixer.Channel(1)
     left_channel.play(left_audio)
+    time.sleep(.1)
     right_channel.play(right_audio)
     left_audio.set_volume(vol)
     right_audio.set_volume(vol)
