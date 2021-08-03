@@ -30,7 +30,6 @@ lcd.clear()
 lcd.color = [100, 0, 0]
 
 first_menu = [" update?", " play?", " exit?"]
-second_menu = os.listdir("audio/")
 
 
 def menu_control(header, menu_text):
@@ -86,8 +85,8 @@ def play_audio(vol, left_filename, right_filename):
     right_channel = mixer.Channel(1)
     left_channel.play(left_audio)
     right_channel.play(right_audio)
-    left_audio.set_volume(vol, 0)
-    right_audio.set_volume(0, vol)
+    left_audio.set_volume(vol)
+    right_audio.set_volume(vol)
     time.sleep(max(left_audio.get_length(), right_audio.get_length()))
 
 
@@ -103,7 +102,9 @@ while True:
         git_pull()
         lcd.message = ' update complete'
         lcd.clear()
+
     elif first_choice == 1:
+        second_menu = os.listdir("audio/")
         lcd.clear()
         left_choice = menu_control(" left signal", second_menu)
         lcd.clear()
