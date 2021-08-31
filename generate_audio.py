@@ -41,7 +41,7 @@ class GenerateAudio:
         """
         len_impulse = impulse_time/1000*self.sample_rate
         for i in range(int(len_impulse)):
-            temp_audio_val = np.sin(i / self.sample_rate * 2 * np.pi * self.frequency)
+            temp_audio_val = np.sin(i / self.sample_rate * 2 * np.pi * 1/(impulse_time/1000))  # self.frequency)
             self.audio.append(temp_audio_val)
 
     def add_both(self, pause_time=500, impulse_time=100, volume=1):
@@ -93,9 +93,9 @@ ga.filename = "test3.wav"
 
 
 
-ga.add_both(500, 100)
-ga.add_both(500, 100)
-ga.add_both(500, 100)
+for i in range(20):
+    ga.add_both(300,10)
+
 ga.save_wav_audio()
 ga.plot_wav_audio()
 
